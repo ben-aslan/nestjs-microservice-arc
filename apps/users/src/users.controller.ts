@@ -8,10 +8,11 @@ export class UsersController {
 
   @MessagePattern('users.findAll')
   findAll(): string {
-    throw new RpcException({
-      statusCode: 403,
-      message: 'Forbidden: You do not have access to this resource',
-    });
+    // throw new RpcException({
+    //   statusCode: 403,
+    //   message: 'Forbidden: You do not have access to this resource',
+    // });
+    throw new ForbiddenException()
     return this.usersService.getHello();
   }
 }
