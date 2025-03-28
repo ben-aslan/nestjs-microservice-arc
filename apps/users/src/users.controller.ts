@@ -4,7 +4,7 @@ import { MessagePattern, RpcException } from '@nestjs/microservices';
 
 @Controller()
 export class UsersController {
-  constructor(private readonly usersService: UsersService) {}
+  constructor(private readonly usersService: UsersService) { }
 
   @MessagePattern('users.findAll')
   findAll(): string {
@@ -12,7 +12,8 @@ export class UsersController {
     //   statusCode: 403,
     //   message: 'Forbidden: You do not have access to this resource',
     // });
-    throw new ForbiddenException()
+    // throw new ForbiddenException()
+    return process.env.JWT_SECRET ?? "";
     return this.usersService.getHello();
   }
 }
